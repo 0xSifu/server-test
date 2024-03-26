@@ -6,7 +6,6 @@ const Comment = require('../models/Comment');
 
 module.exports = function() {
 
-    // Create a new comment
     router.post('/api/comments', async (req, res) => {
         try {
             const { text, user } = req.body;
@@ -18,7 +17,6 @@ module.exports = function() {
         }
     });
 
-    // Get all comments
     router.get('/api/comments', async (req, res) => {
         try {
             const comments = await Comment.find();

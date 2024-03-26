@@ -28,7 +28,6 @@ module.exports = function() {
   //   });
   // });
 
-  // Add a new profile with validation
   router.post('/api/add-profiles', async function(req, res, next) {
     try {
       const profile = new Profile(req.body);
@@ -43,7 +42,6 @@ module.exports = function() {
     }
   });
 
-  // Get a profile by ID with error handling
   router.get('/api/profiles/:id', async function(req, res, next) {
     try {
       const profile = await Profile.findById(req.params.id).lean();
@@ -60,10 +58,9 @@ module.exports = function() {
     }
   });
 
-  // Define the route to return JSON data for all profiles with concurrency handling
   router.get('/api/get-all', async function(req, res, next) {
     try {
-      const profiles = await Profile.find().lean(); // Fetch all profiles from MongoDB
+      const profiles = await Profile.find().lean();
       res.json(profiles);
     } catch (err) {
       res.status(500).json({ message: 'Internal server error' });

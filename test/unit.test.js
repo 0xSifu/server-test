@@ -61,8 +61,6 @@ describe('Profile Controller', () => {
             expect(response.statusCode).toBe(201);
             expect(response.body).toEqual(savedProfile);
         });
-
-        // Add more test cases for validation errors, etc.
     });
 
     describe('GET /api/profiles/:id', () => {
@@ -81,13 +79,8 @@ describe('Profile Controller', () => {
                 image: 'https://soulverse.boo.world/images/1.png'
             };
 
-            // Mock the findById method of the Profile model to resolve with the entire mock profile object
             Profile.findById.mockResolvedValue(mockProfileData);
-
-            // Send a GET request to retrieve the profile by ID
             const response = await request(app).get(`/api/profiles/${mockProfileData.id}`);
-
-            // Assert the response status code and body
             expect(response.statusCode).toBe(500);
             expect(response.body).toEqual({message :'Internal server error'});
         });
@@ -159,8 +152,6 @@ describe('Profile Controller', () => {
             expect(response.statusCode).toBe(201);
             expect(response.body).toEqual(savedVote);
         });
-
-        // Add more test cases for validation errors, etc.
     });
 
     describe('GET /api/votes', () => {

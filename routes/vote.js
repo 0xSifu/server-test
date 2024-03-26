@@ -6,7 +6,6 @@ const Vote = require('../models/Vote');
 
 module.exports = function() {
 
-    // Create a new vote
     router.post('/api/votes', async (req, res) => {
         try {
             const { user, comment, liked } = req.body;
@@ -18,7 +17,6 @@ module.exports = function() {
         }
     });
 
-// Get all votes
     router.get('/api/votes', async (req, res) => {
         try {
             const votes = await Vote.find();
